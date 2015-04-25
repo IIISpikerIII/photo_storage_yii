@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "yiisoft/yii": "1.1.14"
+        "yiisoft/yii": "1.1.14",
+        "clevertech/yii-booster": "v3.0.0"
     } ,
     "config":{
         "vendor-dir": "protected/vendor"
