@@ -1,0 +1,5 @@
+### Yii template
+public/assets/*
+protected/runtime/*
+protected/data/*.db
+themes/classic/views/
