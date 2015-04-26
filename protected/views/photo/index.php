@@ -11,6 +11,10 @@
             'value' => 'CHtml::image("/".Yii::app()->params["imgPath"].$data->path,"",array("width"=>200, "height"=>200))',
         ),
         'title',
-        'rating'
+        'rating',
+        array(
+            'type' => 'raw',
+            'value' => 'CHtml::link("Смотреть", array("photo/view", "id"=> $data->id))',
+        ),
     ),
 )); ?>

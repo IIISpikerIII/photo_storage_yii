@@ -9,6 +9,7 @@
  * @property string $path
  * @property string $date
  * @property integer $id_user
+ * @property integer $counter
  * @property double $rating
  */
 class Photo extends CActiveRecord
@@ -31,7 +32,7 @@ class Photo extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title, id_user, file', 'required'),
-			array('id_user', 'numerical', 'integerOnly'=>true),
+			array('id_user, counter', 'numerical', 'integerOnly'=>true),
 			array('rating', 'numerical'),
 			array('title, path', 'length', 'max'=>100),
             array('file', 'file', 'types'=>'png, jpeg, jpg', 'maxSize'=> 50000),
@@ -63,6 +64,7 @@ class Photo extends CActiveRecord
             'date' => 'Date',
             'id_user' => 'Id User',
             'rating' => 'Рейтинг',
+            'counter' => 'проголосовало',
         );
     }
 
@@ -80,6 +82,14 @@ class Photo extends CActiveRecord
             }
         } else
             return false;
+    }
+
+    public static function RatingUp($id_photo, $vote) {
+
+        $rating = new CDbExpression('(rating * counter + '.$vote.')/(counter + 1)');
+        $counter = new CDbExpression('counter + 1');
+
+        return Photo::model()->updateByPk($id_photo, array('rating' => $rating, 'counter' => $counter));
     }
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.

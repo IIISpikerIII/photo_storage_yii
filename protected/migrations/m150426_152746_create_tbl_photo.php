@@ -12,11 +12,11 @@ class m150426_152746_create_tbl_photo extends CDbMigration
               `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
               `id_user` int(11) NOT NULL,
               `rating` float NOT NULL DEFAULT '0',
+              `counter` int(11) NOT NULL DEFAULT '0',
               PRIMARY KEY (`id`)
             ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=0 ;
 SQL;
         $this->execute($sql);
-
 	}
 
 	public function down()

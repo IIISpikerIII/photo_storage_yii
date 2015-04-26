@@ -7,7 +7,8 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'Photo Storage',
+    'defaultController' => 'photo',
 
     'aliases' => array(
         'bootstrap' => realpath(__DIR__ . '/../vendor/clevertech/yii-booster/src'), // change if necessary
