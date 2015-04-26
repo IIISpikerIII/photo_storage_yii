@@ -65,6 +65,7 @@ class Photo extends CActiveRecord
             'id_user' => 'Id User',
             'rating' => 'Рейтинг',
             'counter' => 'проголосовало',
+            'file' => 'Изображение',
         );
     }
 
@@ -77,7 +78,7 @@ class Photo extends CActiveRecord
 
             if($this->isNewRecord) {
 
-                $this->path = FileHelper::upload_image($this->file);
+                $this->path = FileHelper::upload_image(Yii::app()->params['imgPath'], $this->file);
                 return $this->path !== false?:false;
             }
         } else
@@ -105,7 +106,6 @@ class Photo extends CActiveRecord
 	 */
 	public function search()
 	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
 
@@ -114,7 +114,7 @@ class Photo extends CActiveRecord
 		$criteria->compare('path',$this->path,true);
 		$criteria->compare('date',$this->date,true);
 		$criteria->compare('id_user',$this->id_user);
-		$criteria->compare('rating',$this->rating);
+		$criteria->compare('rating',$this->rating, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

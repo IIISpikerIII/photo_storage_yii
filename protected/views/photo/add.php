@@ -1,4 +1,4 @@
-<div class="main-content" style="margin: 0 auto;">
+<div class="form">
 
     <h2>Добавление фотографии</h2>
 

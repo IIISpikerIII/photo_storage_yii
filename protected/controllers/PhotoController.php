@@ -29,6 +29,14 @@ class PhotoController extends Controller
     public function actionIndex()
     {
         $model = new Photo();
+        $model->unsetAttributes();
+        $attributes = Yii::app()->request->getParam('Photo');
+
+        if($attributes) {
+
+            $model->attributes = $attributes;
+        }
+
         $this->render('index', array(
             'model' => $model
         ));

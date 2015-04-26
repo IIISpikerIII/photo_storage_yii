@@ -10,7 +10,7 @@
         ),
     )); ?>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="note">Поля обязательны к заполнению <span class="required">*</span>.</p>
 
     <div class="row">
         <?php echo $form->labelEx($model,'email'); ?>

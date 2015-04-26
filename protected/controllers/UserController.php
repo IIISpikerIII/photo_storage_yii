@@ -18,7 +18,7 @@ class UserController extends Controller
             $model->setAttributes($attributes);
 
             if($model->save())
-                $this->redirect('site/login');
+                $this->redirect('/site/login');
         }
 
         $this->render('registration', array(

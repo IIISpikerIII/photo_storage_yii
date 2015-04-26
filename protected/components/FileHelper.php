@@ -29,13 +29,13 @@ class FileHelper
      * @param $file
      * @return bool
      */
-    public static function upload_image($file)
+    public static function upload_image($path,$file)
     {
         $directory = mt_rand(0, 5);
 
         //определение имени файла
         $extension = mb_strtolower($file->extensionName);
-        $filename = FileHelper::getRandomFileName(Yii::app()->baseUrl . Yii::app()->params['imgPath'] . $directory . '/', $extension, true);
+        $filename = FileHelper::getRandomFileName(Yii::app()->baseUrl . $path . $directory . '/', $extension, true);
         $filename = $directory . '/' . $filename . '.' . $extension;
 
         return ($file->saveAs(Yii::app()->params['imgPath'] . $filename)) ? $filename : false;

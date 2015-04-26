@@ -29,7 +29,7 @@ class Comment extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_photo, author, email, rating, comment', 'required'),
+			array('id_photo, author, email, rating', 'required'),
 			array('id_photo, rating', 'numerical', 'integerOnly'=>true),
 			array('email', 'email'),
 			array('email', 'uniqueEmailAndPhoto'),
@@ -60,8 +60,8 @@ class Comment extends CActiveRecord
                 $usr = User::model()->findByPk(Yii::app()->user->id);
                 $this->author = $usr->username;
                 $this->email = $usr->email;
-                return true;
             }
+            return true;
         }
     }
 
@@ -72,16 +72,6 @@ class Comment extends CActiveRecord
         }
         parent::afterSave();
     }
-    /**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-		);
-	}
 
 	/**
 	 * @return array customized attribute labels (name=>label)
@@ -91,10 +81,10 @@ class Comment extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'id_photo' => 'Id Photo',
-			'author' => 'Author',
+			'author' => 'Автор фото',
 			'email' => 'Email',
-			'rating' => 'Rating',
-			'comment' => 'Comment',
+			'rating' => 'Рейтинг',
+			'comment' => 'Коментарий',
 		);
 	}
 
@@ -138,4 +128,15 @@ class Comment extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public static function checkCommentUser($id_photo) {
+
+        if(!Yii::app()->user->isGuest) {
+
+            $usr = User::model()->findByPk(Yii::app()->user->id);
+            return Comment::model()->exists('email = "'.$usr->email.'" AND id_photo ='. $id_photo);
+        }
+
+        return false;
+    }
 }

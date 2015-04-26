@@ -26,7 +26,7 @@
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
 
-        <?	$this->widget(
+        <?$this->widget(
             'bootstrap.widgets.TbNavbar',
             array(
                 'brand' => '#',
@@ -46,15 +46,12 @@
             )
         );?>
 
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
 
+    <div class="main-content">
 
 	    <?php echo $content; ?>
 
+    </div>
 
 	<div class="clear"></div>
 
