@@ -5,13 +5,15 @@ class m150425_073801_create_tbl_user extends CDbMigration
 	public function up()
 	{
         $sql = <<<SQL
-            CREATE TABLE `{{user}}` (
-              `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-              `username` varchar(100) DEFAULT NULL,
-              `password` varchar(60) DEFAULT NULL,
-              `email` varchar(100) DEFAULT NULL,
+            CREATE TABLE IF NOT EXISTS `{{photo}}` (
+              `id` int(11) NOT NULL AUTO_INCREMENT,
+              `title` varchar(100) NOT NULL,
+              `path` varchar(100) NOT NULL,
+              `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+              `id_user` int(11) NOT NULL,
+              `rating` float NOT NULL DEFAULT '0',
               PRIMARY KEY (`id`)
-            ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+            ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=0 ;
 SQL;
         $this->execute($sql);
 	}
