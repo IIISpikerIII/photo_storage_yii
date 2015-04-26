@@ -45,8 +45,9 @@ class CommentWidget extends CWidget
         if ($attributes) {
 
             $model->attributes = $attributes;
-            $model->id_photo = $id;
         }
+
+        $model->id_photo = $id;
 
         $this->render('view', array(
             'model' => $model,
