@@ -1,5 +1,5 @@
 <?php
 
 return array(
-    'adminEmail'=>'webmaster@example.com',
+    'imgPath'=>'images/storage/',
 );

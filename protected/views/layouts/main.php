@@ -35,9 +35,10 @@
                     array(
                         'class' => 'bootstrap.widgets.TbMenu',
                         'items' => array(
-                            array('label'=>'Главная', 'url'=>array('/site/index')),
+                            array('label'=>'Главная', 'url'=>array('/photo/index')),
                             array('label'=>'Вход', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
                             array('label'=>'Регистрация', 'url'=>array('/user/registration'), 'visible'=>Yii::app()->user->isGuest),
+                            array('label'=>'Загрузить', 'url'=>array('/photo/add'), 'visible'=>!Yii::app()->user->isGuest),
                             array('label'=>'Выход ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
                         )
                     )
@@ -51,7 +52,9 @@
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>
 
-	<?php echo $content; ?>
+
+	    <?php echo $content; ?>
+
 
 	<div class="clear"></div>
 
