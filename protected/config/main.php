@@ -9,8 +9,12 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
 
+    'aliases' => array(
+        'bootstrap' => realpath(__DIR__ . '/../vendor/clevertech/yii-booster/src'), // change if necessary
+    ),
+
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log', 'booster'),
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -32,6 +36,9 @@ return array(
 
 	// application components
 	'components'=>array(
+        'booster' => array(
+            'class' => 'bootstrap.components.Bootstrap',
+        ),
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
